@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkhhbrcpv80y"]
+
+[ext_resource type="FontFile" uid="uid://pgicqpt7j2c0" path="res://fonts/Arka_solid.ttf" id="1_wuqfy"]
+[ext_resource type="Script" path="res://scripts/UI/ButtonSettingsToggle.gd" id="2_0bm10"]
+
+[node name="Settings" type="VBoxContainer"]
+offset_top = 153.6
+offset_right = 1366.0
+offset_bottom = 614.4
+
+[node name="SettingsTitle" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("1_wuqfy")
+theme_override_font_sizes/font_size = 70
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="SettingsButtons" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="ButtonBack" type="Button" parent="SettingsButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
+script = ExtResource("2_0bm10")
+
+[connection signal="button_up" from="SettingsButtons/ButtonBack" to="SettingsButtons/ButtonBack" method="_on_button_up"]

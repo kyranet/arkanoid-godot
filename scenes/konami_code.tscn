@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://5fx3k18y5sdc"]
+
+[ext_resource type="FontFile" uid="uid://pgicqpt7j2c0" path="res://fonts/Arka_solid.ttf" id="1_ml0oa"]
+[ext_resource type="Script" path="res://scripts/UI/ButtonSettingsToggle.gd" id="2_h4e1s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="KonamiCode" type="VBoxContainer" parent="."]
+offset_top = 153.6
+offset_right = 1366.0
+offset_bottom = 614.4
+
+[node name="KonamiCodeTitle" type="Label" parent="KonamiCode"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("1_ml0oa")
+theme_override_font_sizes/font_size = 70
+text = "Congrats, you found it"
+horizontal_alignment = 1
+
+[node name="KonamiCodeButtons" type="VBoxContainer" parent="KonamiCode"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="ButtonReturn" type="Button" parent="KonamiCode/KonamiCodeButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Return"
+script = ExtResource("2_h4e1s")
+
+[connection signal="button_up" from="KonamiCode/KonamiCodeButtons/ButtonReturn" to="KonamiCode/KonamiCodeButtons/ButtonReturn" method="_on_secret_escape"]

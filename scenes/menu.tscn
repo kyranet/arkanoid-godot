@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://hgeose1juvmh"]
+[gd_scene load_steps=6 format=3 uid="uid://hgeose1juvmh"]
 
+[ext_resource type="Script" path="res://scripts/Unknown/KonamiCode.gd" id="1_agl2j"]
 [ext_resource type="FontFile" uid="uid://pgicqpt7j2c0" path="res://fonts/Arka_solid.ttf" id="1_xxhc5"]
+[ext_resource type="Script" path="res://scripts/UI/ButtonSettingsToggle.gd" id="2_4hyou"]
+[ext_resource type="Script" path="res://scripts/UI/ButtonExit.gd" id="2_wspc3"]
+[ext_resource type="PackedScene" uid="uid://xkhhbrcpv80y" path="res://scenes/settings.tscn" id="4_0m855"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="MainMenu" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_top = 0.2
 anchor_right = 1.0
@@ -16,7 +20,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="MenuTitle" type="Label" parent="CanvasLayer/MainMenu"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("1_xxhc5")
@@ -24,22 +28,33 @@ theme_override_font_sizes/font_size = 70
 text = "ARKANOID"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="MenuButtons" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="ButtonPlay" type="Button" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+[node name="ButtonPlay" type="Button" parent="CanvasLayer/MainMenu/MenuButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
-[node name="ButtonSettings" type="Button" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+[node name="ButtonSettings" type="Button" parent="CanvasLayer/MainMenu/MenuButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Settings"
+script = ExtResource("2_4hyou")
 
-[node name="ButtonExit" type="Button" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+[node name="ButtonExit" type="Button" parent="CanvasLayer/MainMenu/MenuButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+script = ExtResource("2_wspc3")
+
+[node name="Settings" parent="CanvasLayer" instance=ExtResource("4_0m855")]
+visible = false
+
+[node name="NothingSecret" type="Node" parent="CanvasLayer"]
+script = ExtResource("1_agl2j")
+
+[connection signal="button_up" from="CanvasLayer/MainMenu/MenuButtons/ButtonSettings" to="CanvasLayer/MainMenu/MenuButtons/ButtonSettings" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/MenuButtons/ButtonExit" to="CanvasLayer/MainMenu/MenuButtons/ButtonExit" method="_on_button_up"]
