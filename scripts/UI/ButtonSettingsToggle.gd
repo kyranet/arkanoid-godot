@@ -14,5 +14,5 @@ func _on_button_up():
 
 # Returns from the depths of the unknown
 func _on_secret_escape():
-	get_tree().change_scene_to_file("res://scenes/menu.tscn");
+	get_tree().change_scene_to_file(MAIN_MENU);
 	
